@@ -1,0 +1,24 @@
+---
+title: "Presentation"
+author: "Desmond L Molloy"
+date: "11/13/2020"
+output: html_document
+---
+
+<<insertHTML:[animus.html]
+```{r, echo=FALSE}
+library(animusDavidowitz)
+library(raster)
+clean_and_build()
+```
+
+The aim of this project was to create an interactive version of the graph produced by Chae et al in their 2015 paper "Association between an Internet-Based Measure of Area Racism and Black Mortality", enabling the user to highlight the percent difference between the measure of racism used for selected designated market areas (the basic geographic unit of the study) and national averages. The output, an HTML visualisation created using the Altair package in Python, is shown beneath.
+
+```{r, echo=FALSE}
+htmltools::includeHTML("animus.html")
+```
+Because the measure used here is slightly different from the one used for Chae et al's visualisation (percent difference rather than standard deviations) , appearance varies slightly. The original paper showed a clear geographic trend, with the rural Northeast and South reporting much higher incidence of Google searches for the N-word. This version shows little geographic consistency. 
+Challenges remain. Altair appears to have set the NA values present to zero, making it appear as though areas without data had no searches for the N-word. Outliers were also present; the West Palm Beach-Fort Pierce area of Florida appears to have a drastically higher rate of searches with the N word than surrounding DMA. 
+
+##Citations
+1. Chae, David H., et al. "Association between an internet-based measure of area racism and black mortality." PloS one 10.4 (2015): e0122963.
